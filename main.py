@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 import sys
 from ui_1 import Ui_MainWindow
-from buttons import Buttons
+# from buttons import Buttons
 from snake import SnakeWindow
 from wordmaker import WordMaker
 
@@ -28,6 +28,7 @@ if __name__ == '__main__':
     ex = MyWidget()
     ex.add_application('WordMaker', WordMaker)
     ex.add_application('Snake', SnakeWindow)
-    ex.add_application('Buttons', Buttons)
+    # Example
+    # ex.add_application('Buttons', Buttons)
     ex.show()
     sys.exit(a.exec_())

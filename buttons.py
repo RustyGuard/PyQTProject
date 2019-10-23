@@ -10,5 +10,3 @@ class Buttons(Game, Ui_MainWindow):
     def OnUpdate(self, delta):
         print(delta)
 
-    def getName(self):
-        return 'Buttons'

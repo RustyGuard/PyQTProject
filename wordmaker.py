@@ -1,4 +1,4 @@
-from ui_buttons import Ui_MainWindow
+from ui_wordmaker import Ui_MainWindow
 from game import Game
 
 
