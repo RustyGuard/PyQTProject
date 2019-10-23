@@ -3,6 +3,7 @@ import sys
 from ui_1 import Ui_MainWindow
 from buttons import Buttons
 from snake import SnakeWindow
+from wordmaker import WordMaker
 
 
 class MyWidget(QMainWindow, Ui_MainWindow):
@@ -25,7 +26,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
 if __name__ == '__main__':
     a = QApplication(sys.argv)
     ex = MyWidget()
-    ex.add_application('Buttons', Buttons)
+    ex.add_application('WordMaker', WordMaker)
     ex.add_application('Snake', SnakeWindow)
+    ex.add_application('Buttons', Buttons)
     ex.show()
     sys.exit(a.exec_())
