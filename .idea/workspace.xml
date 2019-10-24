@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fef9421-de0b-4f98-87c9-28635ec4d4e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Board.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/letters.db" beforeDir="false" afterPath="$PROJECT_DIR$/res/letters.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui_wordmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_wordmaker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui_wordmaker.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui_wordmaker.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/word_rus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/word_rus.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wordmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/wordmaker.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +34,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Rusty\PycharmProjects\PyQTProject\res" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -42,7 +52,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.main">
-    <configuration name="buttons" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Board" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PyQTProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -54,7 +64,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/buttons.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Board.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -126,12 +136,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="wordmaker" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="PyQTProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/wordmaker.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.Board" />
+        <item itemvalue="Python.wordmaker" />
         <item itemvalue="Python.snake" />
         <item itemvalue="Python.game" />
-        <item itemvalue="Python.buttons" />
       </list>
     </recent_temporary>
   </component>

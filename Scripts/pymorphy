@@ -1,0 +1,4 @@
+#!C:\Users\Rusty\PycharmProjects\PyQTProject\Scripts\python.exe
+import sys
+from pymorphy2 import cli
+sys.exit(cli.main())
