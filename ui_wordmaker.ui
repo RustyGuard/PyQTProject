@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="wordStart">
     <property name="geometry">
      <rect>
       <x>600</x>
@@ -23,8 +23,15 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Segoe Print</family>
+      <pointsize>12</pointsize>
+      <italic>false</italic>
+     </font>
+    </property>
     <property name="text">
-     <string>Выбрать территорию для ввода</string>
+     <string>Начать ввод</string>
     </property>
    </widget>
    <widget class="QListWidget" name="listWidget">
@@ -33,8 +40,14 @@
       <x>600</x>
       <y>20</y>
       <width>191</width>
-      <height>281</height>
+      <height>211</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>12</pointsize>
+     </font>
     </property>
    </widget>
    <widget class="QPushButton" name="b0">
@@ -45,6 +58,12 @@
       <width>51</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>14</pointsize>
+     </font>
     </property>
     <property name="text">
      <string/>
@@ -59,6 +78,12 @@
       <height>51</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -71,6 +96,12 @@
       <width>51</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>14</pointsize>
+     </font>
     </property>
     <property name="text">
      <string/>
@@ -85,6 +116,12 @@
       <height>51</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -97,6 +134,12 @@
       <width>51</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>14</pointsize>
+     </font>
     </property>
     <property name="text">
      <string/>
@@ -111,6 +154,12 @@
       <height>51</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -124,24 +173,20 @@
       <height>51</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_9">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>360</y>
-      <width>191</width>
-      <height>41</height>
-     </rect>
+   <widget class="QPushButton" name="turnCancel">
+    <property name="enabled">
+     <bool>false</bool>
     </property>
-    <property name="text">
-     <string>Закончить слово</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_10">
     <property name="geometry">
      <rect>
       <x>600</x>
@@ -150,108 +195,140 @@
       <height>41</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Закончить ход</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="progressBar">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>610</y>
-      <width>151</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-   </widget>
-   <widget class="QLCDNumber" name="lcdNumber">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>580</y>
-      <width>64</width>
-      <height>23</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLCDNumber" name="lcdNumber_2">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>610</y>
-      <width>64</width>
-      <height>23</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>580</y>
-      <width>121</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Первый игрок:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>610</y>
-      <width>121</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Второй игрок:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>545</y>
-      <width>61</width>
-      <height>21</height>
-     </rect>
-    </property>
     <property name="font">
      <font>
+      <family>Segoe Print</family>
       <pointsize>12</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Баллы</string>
+     <string>Отменить ход</string>
     </property>
    </widget>
-   <widget class="QLCDNumber" name="lcdNumber_3">
+   <widget class="QPushButton" name="turnEnd">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>580</y>
-      <width>64</width>
-      <height>23</height>
+      <x>600</x>
+      <y>460</y>
+      <width>191</width>
+      <height>41</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>580</y>
-      <width>91</width>
-      <height>21</height>
-     </rect>
+    <property name="font">
+     <font>
+      <family>Segoe Print</family>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="text">
-     <string>Ходов осталось</string>
+     <string>Закончить ход</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="wordX">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>240</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="maximum">
+     <number>15</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="wordY">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>240</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="maximum">
+     <number>15</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="wordLen">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>240</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Papyrus</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>16</number>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>280</y>
+      <width>111</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe Print</family>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>Горизонтально</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Вертикально</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="wordEnd">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>360</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe Print</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Закончить слово</string>
     </property>
    </widget>
   </widget>

@@ -14,7 +14,7 @@ class Board:
         self.chips = []
         cur = self.let_con.cursor()
         for i in cur.execute('''SELECT * FROM letters''').fetchall():
-            print(i)
+            # print(i)
             for j in range(i[2]):
                 self.chips.append(i[1])
         self.chips = random.sample(self.chips, len(self.chips))
@@ -22,12 +22,20 @@ class Board:
     def take_chip(self):
         return self.chips.pop(-1)
 
-    def give_chip(self, btns):
+    def next_chips(self):
         if len(self.chips) == 0:
-            return -1
-        for i in btns:
-            i.setText(self.take_chip())
-        return 0
+            self.curr_chips = [''] * 7
+        else:
+            self.curr_chips = [self.take_chip() for _ in range(7)]
+
+    def update_chips(self, btns):
+        for i, btn in zip(self.curr_chips, btns):
+            btn.setText(i)
+
+    def update_grid(self, btns):
+        for i, j in zip(self.grid, btns):
+            for let, btn in zip(i, j):
+                btn.setText(let)
 
     def close(self):
         self.let_con.close()

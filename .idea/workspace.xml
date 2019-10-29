@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fef9421-de0b-4f98-87c9-28635ec4d4e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Board.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/letters.db" beforeDir="false" afterPath="$PROJECT_DIR$/res/letters.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Board.py" beforeDir="false" afterPath="$PROJECT_DIR$/Board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snake.py" beforeDir="false" afterPath="$PROJECT_DIR$/snake.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui_wordmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_wordmaker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui_wordmaker.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui_wordmaker.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/word_rus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/word_rus.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wordmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/wordmaker.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,7 +50,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.wordmaker">
     <configuration name="Board" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PyQTProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,9 +158,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.wordmaker" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.Board" />
-        <item itemvalue="Python.wordmaker" />
         <item itemvalue="Python.snake" />
         <item itemvalue="Python.game" />
       </list>

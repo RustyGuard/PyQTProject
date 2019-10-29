@@ -1,6 +1,7 @@
+import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPainter, QColor
-from PyQt5.QtWidgets import QMessageBox, QInputDialog
+from PyQt5.QtWidgets import QMessageBox, QInputDialog, QApplication
 
 from ui_snake import Ui_MainWindow
 from game import Game
@@ -115,3 +116,10 @@ class SnakeWindow(Game, Ui_MainWindow):
 
     def getName(self):
         return 'Snake'
+
+
+if __name__ == '__main__':
+    a = QApplication(sys.argv)
+    ex = SnakeWindow(None)
+    ex.show()
+    sys.exit(a.exec_())
