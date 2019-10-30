@@ -10,7 +10,7 @@ import random
 
 class SnakeWindow(Game, Ui_MainWindow):
     def __init__(self, parent):
-        super().__init__(parent, 250)
+        super().__init__(parent, 200)
         print('Snake!')
         self.locked = False
         self.GRID_SIZE = 20
