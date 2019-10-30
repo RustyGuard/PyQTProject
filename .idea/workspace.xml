@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fef9421-de0b-4f98-87c9-28635ec4d4e8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Board.py" beforeDir="false" afterPath="$PROJECT_DIR$/Board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/snake.py" beforeDir="false" afterPath="$PROJECT_DIR$/snake.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui_wordmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_wordmaker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui_wordmaker.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui_wordmaker.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wordmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/wordmaker.py" afterDir="false" />
@@ -72,7 +72,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="game" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="buttons" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PyQTProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -84,7 +84,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/game.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/buttons.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -159,10 +159,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.wordmaker" />
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.Board" />
+        <item itemvalue="Python.buttons" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.snake" />
-        <item itemvalue="Python.game" />
       </list>
     </recent_temporary>
   </component>
