@@ -9,8 +9,6 @@ class Board:
         self.morph = pymorphy2.MorphAnalyzer()
         self.words = []
         self.log = log
-        # with open('res/word_rus.txt', mode='r', encoding='utf-8') as words:
-        # self.words = map(lambda x: x.replace('\n', ''), words.readlines())
 
     def generate(self):
         self.grid = [[''] * 16 for _ in range(16)]
@@ -106,13 +104,8 @@ class Board:
         res = self.morph.parse(word)
         for i in res:
             # print(i)
-            if {'NOUN', 'nomn'} in i.tag:
-                # if i.score >= 0.5:
-                print(f'PyMorphy foundt it: {i}')
+            if {'NOUN'} in i.tag and i.normal_form == word:
                 return True
-                # else:
-                # print(f'Low score: {i}')
             else:
                 print(f'Incorrect tags: {i}')
         return False
-        # return word in self.words

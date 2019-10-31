@@ -100,7 +100,7 @@ class SnakeWindow(Game, Ui_MainWindow):
 
     def paintEvent(self, e):
         qp = QPainter(self)
-        cell_size = 500 / self.GRID_SIZE
+        cell_size = 500 // self.GRID_SIZE
         for x in range(self.GRID_SIZE):
             for y in range(self.GRID_SIZE):
                 if x == self.snake_info[0] and y == self.snake_info[1]:
