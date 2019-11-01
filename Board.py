@@ -30,7 +30,7 @@ class Board:
             for i, line in enumerate(f.readlines()):
                 for j, boost in enumerate(line.split()):
                     if boost != 0:
-                        self.boosters[j, i] = boost
+                        self.boosters[j, i] = int(boost)
 
     def generate(self):
         self.grid = [[''] * 16 for _ in range(16)]
