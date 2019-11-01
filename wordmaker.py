@@ -1,8 +1,7 @@
 import sys
 
-from PyQt5.QtCore import QFile
-from PyQt5.QtGui import QColor, QFont, QPalette, QPainter
-from PyQt5.QtWidgets import QPushButton, QApplication, QListWidgetItem, QDialog, QMessageBox, QTableWidgetItem
+from PyQt5.QtGui import QColor, QFont
+from PyQt5.QtWidgets import QPushButton, QApplication, QListWidgetItem, QMessageBox, QTableWidgetItem
 
 from Board import Board
 from ui_wordmaker import Ui_MainWindow
@@ -50,7 +49,6 @@ class WordMaker(Game, Ui_MainWindow):
         self.lockGrid()
         self.first_turn = True
         self.turn = 0
-        # self.lockChips()
 
         # Events
         self.wordStart.clicked.connect(self.start_word)
@@ -160,7 +158,6 @@ class WordMaker(Game, Ui_MainWindow):
             cell.setEnabled(True)
 
     def cancel_word(self):
-        # self.unlockChips()
         self.lockGrid()
         self.board.update_grid(self.grid)
         self.board.update_chips(self.buttons)
@@ -202,12 +199,12 @@ class WordMaker(Game, Ui_MainWindow):
                 j.setProperty('selected', False)
         for i in range(self.wordLen.value()):
             if b:
-                self.grid[self.wordX.value() + i][self.wordY.value()].setProperty('selected', True)
+                if self.wordX.value() + i < 16:
+                    self.grid[self.wordX.value() + i][self.wordY.value()].setProperty('selected', True)
             else:
-                self.grid[self.wordX.value()][self.wordY.value() + i].setProperty('selected', True)
+                if self.wordY.value() + i < 16:
+                    self.grid[self.wordX.value()][self.wordY.value() + i].setProperty('selected', True)
         self.setStyleSheet(self.stylesheet)
-        # print(delta)
-        # self.board.give_chip(self.buttons)
 
     def closeEvent(self, e):
         self.board.close()

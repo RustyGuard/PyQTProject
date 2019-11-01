@@ -25,6 +25,17 @@ class Board:
         self.morph = pymorphy2.MorphAnalyzer()
         self.words = []
         self.log = log
+        # 1 - x2 for letter
+        # 2 - x3 for letter
+        # 3 - x2 for word
+        # 4 - x3 for word
+        # 5 - Cell for first word
+        self.boosters = {}
+        with open('res/boosters.txt') as f:
+            for i, line in enumerate(f.readlines()):
+                for j, boost in enumerate(line.split()):
+                    if boost != 0:
+                        self.boosters[j, i] = boost
 
     def generate(self):
         self.grid = [[''] * 16 for _ in range(16)]
@@ -34,41 +45,6 @@ class Board:
             for j in range(i[2]):
                 self.chips.append(i[1])
         self.chips = random.sample(self.chips, len(self.chips))
-        # 1 - x2 for letter
-        # 2 - x3 for letter
-        # 3 - x2 for word
-        # 4 - x3 for word
-        # 5 - Cell for first word
-        # TODO Move to other file
-        self.boosters = {
-            (3, 0): 1,
-            (0, 3): 1,
-            (1, 6): 2,
-            (6, 1): 2,
-            (10, 1): 2,
-            (1, 10): 2,
-            (1, 1): 3,
-            (2, 2): 3,
-            (0, 0): 4,
-            (15, 0): 4,
-            (0, 15): 4,
-            (15, 15): 4,
-            (8, 0): 4,
-            (0, 8): 4,
-            (8, 15): 4,
-            (15, 8): 4,
-            (7, 7): 5,
-            (7, 8): 5,
-            (8, 7): 5,
-            (8, 8): 5
-        }
-        self.boost_colors = {
-            1: QColor(125, 255, 125),
-            2: QColor(255, 255, 0),
-            3: QColor(125, 125, 255),
-            4: QColor(255, 125, 125),
-            5: QColor(255, 179, 0)
-        }
 
     def draw_boosters(self, qp):
         for i in self.boosters:
