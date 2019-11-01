@@ -1,0 +1,54 @@
+QPushButton {
+    border-color: gray;
+    border-width: 2px;
+    border-style: solid;
+    /*border-radius: 6px;*/
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}
+
+QPushButton[selected=true] {
+    background-color: silver;
+}
+
+QPushButton[grid=true]:enabled {
+    background-color: white;
+}
+
+QPushButton[grid=true]:pressed {
+    background-color: gray;
+}
+
+QPushButton[boost='1'] {
+    border-color: lime;
+}
+
+QPushButton[boost='2'] {
+    border-color: yellow;
+}
+
+QPushButton[boost='3'] {
+    border-color: blue;
+}
+
+QPushButton[boost='4'] {
+    border-color: red;
+}
+
+QPushButton[boost='5'] {
+    border-color: maroon;
+}
+
