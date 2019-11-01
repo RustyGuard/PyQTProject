@@ -12,6 +12,11 @@ QPushButton:pressed {
                                       stop: 0 #dadbde, stop: 1 #f6f7fa);
 }
 
+QPushButton:hover {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 white, stop: 1 silver);
+}
+
 QPushButton:flat {
     border: none; /* no border for a flat push button */
 }
@@ -52,3 +57,106 @@ QPushButton[boost='5'] {
     border-color: maroon;
 }
 
+QScrollBar:horizontal {
+    border: 2px solid grey;
+    background: white;
+    height: 20px;
+    margin: 0px 25px 0 25px;
+}
+QScrollBar::handle:horizontal {
+    background: silver;
+    min-width: 20px;
+}
+QScrollBar::add-line:horizontal {
+    border: 2px solid grey;
+    background: aqua;
+    width: 20px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+    border: 2px solid grey;
+    background: aqua;
+    width: 20px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar:left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
+    border: 2px solid grey;
+    width: 3px;
+    height: 3px;
+    background: white;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+QScrollBar:vertical {
+     border: 2px solid grey;
+     background: white;
+     width: 15px;
+     margin: 25px 0 25px 0;
+}
+QScrollBar::handle:vertical {
+    background: silver;
+    min-height: 20px;
+}
+QScrollBar::add-line:vertical {
+    border: 2px solid grey;
+    background: aqua;
+    height: 20px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical {
+    border: 2px solid grey;
+    background: aqua;
+    height: 20px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+    border: 2px solid grey;
+    width: 3px;
+    height: 3px;
+    background: white;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QSlider::groove:horizontal {
+    border: 2px solid gray;
+    height: 10px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B1B1B1, stop:1 #c4c4c4);
+    margin: 2px 0;
+}
+
+QSlider::handle:horizontal {
+    background: aqua;
+    border: 2px solid gray;
+    width: 18px;
+    margin: -2px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
+}
+
+QSlider::groove:vertical {
+    border: 2px solid gray;
+    width: 10px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B1B1B1, stop:1 #c4c4c4);
+    margin: 0 2px;
+
+    /*background: red;
+    position: absolute;*/ /* absolutely position 4px from the left and right of the widget. setting margins on the widget should work too... */
+    /*left: 4px; right: 4px;*/
+}
+
+QSlider::handle:vertical {
+    background: aqua;
+    border: 2px solid gray;
+    height: 18px;
+    margin: 0 -2px;
+
+}

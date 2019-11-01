@@ -23,8 +23,8 @@ class WordMaker(Game, Ui_MainWindow):
             for j in range(16):
                 b = QPushButton('', self)
                 b.resize(35, 35)
-                b.move(i * 36, j * 36)
-                b.clicked.connect(self.chipInput)
+                b.move(i * 36 + 10, j * 36)
+                b.clicked.connect(self.chip_input)
                 font = QFont()
                 font.setFamily('Comic Sans MS')
                 font.setPointSize(12)
@@ -37,7 +37,7 @@ class WordMaker(Game, Ui_MainWindow):
 
         self.buttons = [self.b0, self.b1, self.b2, self.b3, self.b4, self.b5, self.b6]
         for i in self.buttons:
-            i.clicked.connect(self.chipInput)
+            i.clicked.connect(self.chip_input)
             i.stat = False
 
         # Board
@@ -46,7 +46,7 @@ class WordMaker(Game, Ui_MainWindow):
         self.board.next_chips()
         self.board.update_chips(self.buttons)
         self.board.update_boosters(self.grid)
-        self.lockGrid()
+        self.lock_grid()
         self.first_turn = True
         self.turn = 0
 
@@ -88,18 +88,18 @@ class WordMaker(Game, Ui_MainWindow):
                 self.game_over()
 
     def game_over(self):
-        self.lockGrid()
-        self.lockChips()
+        self.lock_grid()
+        self.lock_chips()
         self.wordStart.setEnabled(False)
         self.wordEnd.setEnabled(False)
         self.turnCancel.setEnabled(False)
         self.turnEnd.setEnabled(False)
         QMessageBox.about(self, 'Game over', 'В наборе закончились фишки.\nИгра завершена.')
 
-    def getCurrPlayer(self):
+    def get_curr_player(self):
         return self.players[self.c_player]
 
-    def lockGrid(self):
+    def lock_grid(self):
         for i in self.grid:
             for j in i:
                 j.setEnabled(False)
@@ -110,26 +110,27 @@ class WordMaker(Game, Ui_MainWindow):
                 (not b and self.wordY.value() + self.wordLen.value() - 1 >= 16):
             self.log('Out of bounds')
             return
-        self.lockGrid()
+        self.lock_grid()
         self.wordStart.setEnabled(False)
         self.wordEnd.setEnabled(True)
         self.turnCancel.setEnabled(True)
         self.turnEnd.setEnabled(False)
-        self.unlockChips()
         self.curr_oper = (self.wordX.value(), self.wordY.value(), self.wordLen.value(), b)
         for i in range(self.wordLen.value()):
             if b:
-                self.unlockCell(self.wordX.value() + i, self.wordY.value())
+                cell = self.grid[self.wordX.value() + i][self.wordY.value()]
             else:
-                self.unlockCell(self.wordX.value(), self.wordY.value() + i)
+                cell = self.grid[self.wordX.value()][self.wordY.value() + i]
+            if not cell.stat:
+                cell.setEnabled(True)
 
     def end_word(self):
         if self.board.input_word(self.grid, self.curr_oper, self.first_turn):
             self.board.commit_grid(self.grid, self.buttons)
             self.board.update_grid(self.grid)
-            self.getCurrPlayer()[2] += self.board.word_points(self.curr_oper)
-            self.log(f'У {self.getCurrPlayer()[0]} теперь {self.getCurrPlayer()[2]} очков!')
-            self.lockGrid()
+            self.get_curr_player()[2] += self.board.word_points(self.curr_oper)
+            self.log(f'У {self.get_curr_player()[0]} теперь {self.get_curr_player()[2]} очков!')
+            self.lock_grid()
             self.wordStart.setEnabled(True)
             self.wordEnd.setEnabled(False)
             self.turnCancel.setEnabled(False)
@@ -139,26 +140,24 @@ class WordMaker(Game, Ui_MainWindow):
             self.log('Invalid word!')
 
     def end_turn(self):
-        old = self.getCurrPlayer()[0]
-        # Skip
+        old = self.get_curr_player()[0]
         self.next_player()
         self.board.raise_chips(self.buttons, self.curr_letter)
         self.board.next_chips()
         self.board.update_chips(self.buttons)
-        self.lockGrid()
+        self.lock_grid()
         self.curr_letter = ''
         self.cursorLet.setText('')
-        # self.lockChips()
         self.log(f'Ход закончен для "{old}".')
-        self.log(f'Следующий ход для "{self.getCurrPlayer()[0]}".')
+        self.log(f'Следующий ход для "{self.get_curr_player()[0]}".')
 
-    def unlockCell(self, x, y):
+    def unlock_cell(self, x, y):
         cell = self.grid[x][y]
         if not cell.stat:
             cell.setEnabled(True)
 
     def cancel_word(self):
-        self.lockGrid()
+        self.lock_grid()
         self.board.update_grid(self.grid)
         self.board.update_chips(self.buttons)
         self.curr_oper = None
@@ -168,7 +167,7 @@ class WordMaker(Game, Ui_MainWindow):
         self.turnCancel.setEnabled(False)
         self.turnEnd.setEnabled(True)
 
-    def chipInput(self):
+    def chip_input(self):
         btn = self.sender()
         a = btn.text()
         btn.setText(self.curr_letter)
@@ -182,13 +181,13 @@ class WordMaker(Game, Ui_MainWindow):
         else:
             btn.setToolTip('')
 
-    def lockChips(self):
-        self.setChipsUnlocked(False)
+    def lock_chips(self):
+        self.set_chips_unlocked(False)
 
-    def unlockChips(self):
-        self.setChipsUnlocked(True)
+    def unlock_chips(self):
+        self.set_chips_unlocked(True)
 
-    def setChipsUnlocked(self, locked):
+    def set_chips_unlocked(self, locked):
         for i in self.buttons:
             i.setEnabled(locked)
 

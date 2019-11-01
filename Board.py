@@ -25,11 +25,6 @@ class Board:
         self.morph = pymorphy2.MorphAnalyzer()
         self.words = []
         self.log = log
-        # 1 - x2 for letter
-        # 2 - x3 for letter
-        # 3 - x2 for word
-        # 4 - x3 for word
-        # 5 - Cell for first word
         self.boosters = {}
         with open('res/boosters.txt') as f:
             for i, line in enumerate(f.readlines()):
@@ -45,11 +40,6 @@ class Board:
             for j in range(i[2]):
                 self.chips.append(i[1])
         self.chips = random.sample(self.chips, len(self.chips))
-
-    def draw_boosters(self, qp):
-        for i in self.boosters:
-            qp.setBrush(self.boost_colors[self.boosters[i]])
-            qp.drawRect(i[0] * 36 - 1, i[1] * 36 - 1, 36, 36)
 
     def take_chip(self):
         return self.chips.pop(-1)
@@ -145,6 +135,11 @@ class Board:
         print(f'Bonus: {bonus}')
         return res + bonus
 
+    # 1 - x2 for letter
+    # 2 - x3 for letter
+    # 3 - x2 for word
+    # 4 - x3 for word
+    # 5 - Cell for first word
     def point_boost(self, x, y, cur, post_boost):
         boost = self.boosters.get((x, y), 0)
         request = cur.execute(f'''SELECT value FROM letters WHERE char='{self.grid[x][y]}' ''')
@@ -167,12 +162,11 @@ class Board:
     def close(self):
         self.let_con.close()
 
-    # Problems with letter 'Е' and 'Ё'
     def check_word(self, word):
         res = self.morph.parse(word)
         for i in res:
             # print(i)
-            if {'NOUN'} in i.tag and i.normal_form == word:
+            if {'NOUN'} in i.tag and i.normal_form.lower().replace('ё', 'е') == word:
                 return True
             else:
                 print(f'Incorrect tags: {i}')
