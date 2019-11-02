@@ -160,3 +160,78 @@ QSlider::handle:vertical {
     margin: 0 -2px;
 
 }
+
+QCheckBox {
+    spacing: 5px;
+}
+
+QCheckBox::indicator {
+    width: 13px;
+    height: 13px;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: aqua;
+    border: 2px solid grey;
+}
+
+QCheckBox::indicator:unchecked:hover {
+    background-color: silver;
+    border: 2px solid grey;
+}
+
+QCheckBox::indicator:unchecked:pressed {
+    background-color: teal;
+    border: 2px solid grey;
+}
+
+QCheckBox::indicator:checked {
+    background-color: aqua;
+    border: 2px solid grey;
+}
+
+QCheckBox::indicator:checked:hover {
+    background-color: silver;
+    border: 2px solid grey;
+}
+
+QCheckBox::indicator:checked:pressed {
+    background-color: teal;
+    border: 2px solid grey;
+}
+
+QCheckBox::indicator:indeterminate:hover {
+    background-color: red;
+    border: 2px solid grey;
+}
+
+QCheckBox::indicator:indeterminate:pressed {
+    background-color: teal;
+    border: 2px solid grey;
+}
+
+QTableWidget {
+    background-color: qlineargradient(x1: 0.5, y1: 0, x2: 0.5, y2: 0.5,
+                                stop: 0 white, stop: 1 silver);
+    selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,
+                                stop: 0 #FF92BB, stop: 1 white);
+
+}
+
+QTableWidget QTableCornerButton::section {
+    background: qlineargradient(x1: 0.5, y1: 0, x2: 0.5, y2: 0.5,
+                                stop: 0 white, stop: 1 silver);
+    border: 2px outset grey;
+}
+
+QHeaderView::section {
+    background-color: qlineargradient(x1: 0.5, y1: 0, x2: 0.5, y2: 0.5,
+                                stop: 0 grey, stop: 1 silver);
+    border: 2px solid teal;
+}
+
+QListWidget::item {
+    background-color: silver;
+    border: 2px solid grey;
+    margin-bottom: 3px;
+}

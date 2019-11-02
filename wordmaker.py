@@ -105,7 +105,7 @@ class WordMaker(Game, Ui_MainWindow):
                 j.setEnabled(False)
 
     def start_word(self):
-        b = self.comboBox.currentText() == 'Горизонтально'
+        b = self.checkBox.isChecked()
         if (b and self.wordX.value() + self.wordLen.value() - 1 >= 16) or \
                 (not b and self.wordY.value() + self.wordLen.value() - 1 >= 16):
             self.log('Out of bounds')
@@ -192,7 +192,8 @@ class WordMaker(Game, Ui_MainWindow):
             i.setEnabled(locked)
 
     def OnUpdate(self, delta):
-        b = self.comboBox.currentText() == 'Горизонтально'
+        b = self.checkBox.isChecked()
+        self.checkBox.setText('→' if b else '↓')
         for i in self.grid:
             for j in i:
                 j.setProperty('selected', False)

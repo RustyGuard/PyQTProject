@@ -233,32 +233,6 @@
      <string>Закончить ход</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>840</x>
-      <y>230</y>
-      <width>131</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Segoe Print</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <item>
-     <property name="text">
-      <string>Горизонтально</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Вертикально</string>
-     </property>
-    </item>
-   </widget>
    <widget class="QPushButton" name="wordEnd">
     <property name="enabled">
      <bool>false</bool>
@@ -317,6 +291,9 @@
     </property>
     <property name="maximum">
      <number>16</number>
+    </property>
+    <property name="value">
+     <number>3</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -379,13 +356,29 @@
      <number>15</number>
     </property>
     <property name="value">
-     <number>0</number>
+     <number>7</number>
     </property>
     <property name="orientation">
      <enum>Qt::Vertical</enum>
     </property>
     <property name="invertedAppearance">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>230</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
     </property>
    </widget>
    <zorder>wordY</zorder>
@@ -401,11 +394,11 @@
    <zorder>b6</zorder>
    <zorder>turnCancel</zorder>
    <zorder>turnEnd</zorder>
-   <zorder>comboBox</zorder>
    <zorder>wordEnd</zorder>
    <zorder>cursorLet</zorder>
    <zorder>wordLen</zorder>
    <zorder>tableWidget</zorder>
+   <zorder>checkBox</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
