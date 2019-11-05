@@ -18,6 +18,7 @@ class WordMaker(Game, Ui_MainWindow):
         self.curr_oper = None
         self.curr_letter = ''
         self.add_player('2nd', 255, 0, 0)
+        self.add_player('3rd', 0, 0, 0)
         for i in range(16):
             line = []
             for j in range(16):

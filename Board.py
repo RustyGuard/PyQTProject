@@ -1,8 +1,7 @@
 import sqlite3
 import pymorphy2
 import random
-
-from PyQt5.QtGui import QColor, QPainter
+import socketserver
 
 
 def get_x(x, offset, hor):
@@ -17,6 +16,26 @@ def get_y(y, offset, hor):
         return y
     else:
         return y + offset
+
+
+class BoardServer(socketserver.BaseRequestHandler):
+    def __init__(self):
+        self.let_con = sqlite3.connect('res/letters.db')
+        self.morph = pymorphy2.MorphAnalyzer()
+        self.words = []
+        self.boosters = {}
+        with open('res/boosters.txt') as f:
+            for i, line in enumerate(f.readlines()):
+                for j, boost in enumerate(line.split()):
+                    if boost != 0:
+                        self.boosters[j, i] = int(boost)
+
+    def handle(self):
+        socket = self.request[1]
+        data = self.request[0].strip()
+        print("{} wrote:".format(self.client_address[0]))
+        print(data)
+        socket.sendto(data.upper(), self.client_address)
 
 
 class Board:
@@ -172,3 +191,9 @@ class Board:
                 print(f'Incorrect tags: {i}')
         print('--------------')
         return False
+
+
+if __name__ == '__main__':
+    HOST, PORT = "192.168.0.221", 9999
+    with socketserver.UDPServer((HOST, PORT), BoardServer) as server:
+        server.serve_forever()

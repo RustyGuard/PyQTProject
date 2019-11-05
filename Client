@@ -1,0 +1,15 @@
+import socket
+import sys
+
+HOST, PORT = "192.168.0.221", 9999
+data = ""
+while data != "exit":
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+    received = str(sock.recv(1024), "utf-8")
+
+    data = input()
+    sock.sendto(bytes(data + "\n", "utf-8"), (HOST, PORT))
+
+    print("Sent:     {}".format(data))
+    print("Received: {}".format(received))

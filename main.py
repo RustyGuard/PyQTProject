@@ -12,7 +12,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.apps = {}
         self.curr = -1
         self.setupUi(self)
-        # self.pushButton.clicked.connect(self.start)
         self.dialogs = list()
 
     def add_application(self, name, app):
