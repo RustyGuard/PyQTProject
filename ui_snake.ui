@@ -6,71 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>499</width>
+    <height>565</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btn3">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>460</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>←</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn2">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>510</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>↓</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn1">
-    <property name="geometry">
-     <rect>
-      <x>740</x>
-      <y>460</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>→</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn0">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>410</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>↑</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>460</y>
+      <x>60</x>
+      <y>510</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -90,14 +38,14 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>410</y>
+      <x>10</x>
+      <y>510</y>
       <width>41</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>🔓</string>
+     <string>🔐</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -109,7 +57,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>499</width>
      <height>21</height>
     </rect>
    </property>
