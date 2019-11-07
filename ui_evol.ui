@@ -14,17 +14,43 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QSpinBox" name="spinOverlay">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>530</y>
-      <width>75</width>
-      <height>23</height>
+      <x>1540</x>
+      <y>10</y>
+      <width>42</width>
+      <height>22</height>
      </rect>
     </property>
-    <property name="text">
-     <string>PushButton</string>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinMutationMin">
+    <property name="geometry">
+     <rect>
+      <x>1540</x>
+      <y>40</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinMutationMax">
+    <property name="geometry">
+     <rect>
+      <x>1590</x>
+      <y>40</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
