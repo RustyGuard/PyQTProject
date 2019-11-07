@@ -1,18 +1,44 @@
 import random
 
-commands = []
 
+class CommandList:
+    def __init__(self):
+        self.cmd_list = []
+        self.cmd_groups = {}
+        self.sum_chance = 0
 
-def add_command(cmd):
-    commands.append(cmd)
-    print(len(commands))
+    def __getitem__(self, item):
+        return self.cmd_list[item][0]
 
+    def __len__(self):
+        return len(self.cmd_list)
 
-# Function must return another
-def add_command_i(cmd, index):
-    for i in range(index):
-        commands.append(cmd(i))
-    print(len(commands))
+    def add_command(self, chance, cmd, desc):
+        self.cmd_list.append((cmd, desc))
+        self.cmd_groups[desc] = (chance, [len(self) - 1])
+        print('Before', self.sum_chance)
+        self.sum_chance += chance
+        print('After', self.sum_chance)
+
+    def add_dir_command(self, chance, cmd, desc):
+        ids = []
+        symb = ['↖', '↑', '↗', '→', '↘', '↓', '↙', '←']
+        for i, s in enumerate(symb):
+            self.cmd_list.append((cmd(i), desc + symb[i]))
+            ids.append(len(self) - 1)
+        self.cmd_groups[desc] = (chance, ids)
+        print('Before', self.sum_chance)
+        self.sum_chance += chance
+        print('After', self.sum_chance)
+
+    def get_random(self):
+        num = random.randint(0, self.sum_chance - 1)
+        for i in self.cmd_groups:
+            num -= self.cmd_groups[i][0]
+            if num < 0:
+                return random.choice(self.cmd_groups[i][1])
+        print(f'Random is wrong! {num} of {self.sum_chance}')
+        return 0
 
 
 def move_i(i):
@@ -20,6 +46,7 @@ def move_i(i):
         xt = cell.xFromDirectionA(i)
         yt = cell.yFromDirectionA(i)
         cell.world.moveCell(xt, yt, cell)
+        cell.health -= 3
         return True
     return move
 
@@ -50,21 +77,20 @@ def eat_i(i):
 
 
 def mineral_to_energy(cell):
-    if cell.mineral > 0:
-        print(cell.mineral)
     if cell.mineral > 50:
         cell.health += 150
         cell.mineral -= 50
     else:
         cell.health += cell.mineral * 3
         cell.mineral = 0
+    return True
 
 
-add_command(photosynthesis)
-add_command_i(move_i, 8)
-add_command_i(eat_i, 8)
-add_command(mineral_to_energy)
-add_command(mineral_to_energy)
+commands = CommandList()
+commands.add_command(10, photosynthesis, 'Gen energy from sun.')
+commands.add_dir_command(7, move_i, 'Move')
+commands.add_dir_command(4, eat_i, 'Eat')
+commands.add_command(3, mineral_to_energy, 'Convert minerals to sun.')
 
 
 class Cell:
@@ -87,10 +113,14 @@ class Cell:
             if commands[self.genom[self.task]](self):
                 self.nextTask()
                 break
-        self.health -= 3
         if self.health > 999:
-            self.cellDouble()
-            self.health -= 150
+            if self.isMulti() == 3:
+                pass
+                self.cellDouble()
+                self.health -= 150
+            else:
+                self.cellMulti()
+                self.health -= 150
 
         if self.y > self.world.height / 2:
             self.mineral += 1
@@ -102,13 +132,40 @@ class Cell:
             self.mineral = 999
 
         if self.health <= 0:
-            self.dead = True
+            self.cell2Organic()
+            print('Hunger')
             self.health = 300
+
+        a = self.isMulti()
+        if a == 3:
+            m = self.mineral + self.mprev.mineral + self.mnext.mineral
+            m = m / 3
+            self.mineral = m
+            self.mnext.mineral = m
+            self.mprev.mineral = m
+            if self.mprev.isMulti() == 3 and self.mnext.isMulti() == 3:
+                h = self.health + self.mprev.health + self.mnext.health
+                h = h / 3
+                self.health = h
+                self.mnext.health = h
+                self.mprev.health = h
+        elif a != 0:
+            b = None
+            if a == 1:
+                b = self.mprev
+            if a == 2:
+                b = self.mnext
+            ab = b.isMulti()
+            if ab == 3:
+                h = self.health + b.health
+                h = h / 6
+                self.health = h * 5
+                b.health = h
 
     def mutate(self, chance, times):
         if random.randint(0, 100) < chance:
             for _ in range(times):
-                self.genom[random.randint(0, len(self.genom) - 1)] = random.randint(0, len(commands) - 1)
+                self.genom[random.randint(0, len(self.genom) - 1)] = commands.get_random()
 
     def nextTask(self, i=1):
         self.task += i
@@ -135,22 +192,53 @@ class Cell:
         return yt
 
     def findEmptyDirection(self):
-        for i in range(8):
+        for i in random.sample(range(8), 8):
             xt = self.xFromDirectionA(i)
             yt = self.yFromDirectionA(i)
             if self.world.isEmpty(xt, yt):
                 return i
         return 8
 
+    def cell2Organic(self):
+        self.dead = True
+        if self.mnext is not None:
+            self.mnext.mprev = None
+            self.mnext = None
+        if self.mprev is not None:
+            self.mprev.mnext = None
+            self.mprev = None
+
     def cellDouble(self):
         dir = self.findEmptyDirection()
         if dir == 8:
-            self.dead = True
+            self.cell2Organic()
             return
         baby = Cell(self.world, self.xFromDirectionA(dir), self.yFromDirectionA(dir), self.genom)
         baby.health = self.health // 2
         self.health = self.health // 2
         baby.mutate(75, 3)
+
+    def cellMulti(self):
+        if (self.mprev is not None) and (self.mnext is not None):
+            return
+        dir = self.findEmptyDirection()
+        if dir == 8:
+            print('Death')
+            self.cell2Organic()
+            return
+        xt = self.xFromDirectionA(dir)
+        yt = self.yFromDirectionA(dir)
+        baby = Cell(self.world, xt, yt, self.genom)
+        baby.mutate(15, 3)
+        baby.health = self.health // 2
+        self.health = self.health // 2
+        # b.direction = (int)(Math.random() * 4)
+        if self.mnext is None:
+            self.mnext = baby
+            baby.mprev = self
+        else:
+            self.mprev = baby
+            baby.mnext = self
 
     def eat(self, dir):
         xt = self.xFromDirectionA(dir)
@@ -158,6 +246,8 @@ class Cell:
         cell = self.world.getCell(xt, yt)
         if cell is None:
             return
+        # if cell == self.mprev or cell == self.mnext:
+            # return
         if cell.dead:
             self.health += 100
             self.world.deleteCell(cell)
@@ -181,4 +271,9 @@ class Cell:
         self.world.deleteCell(self)
 
     def isMulti(self):
-        return 0
+        a = 0
+        if self.mprev is not None:
+            a = 1
+        if self.mnext is not None:
+            a = a + 2
+        return a

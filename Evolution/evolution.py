@@ -11,7 +11,7 @@ from game import Game
 
 class Evolution(Game, Ui_MainWindow):
     def __init__(self, parent):
-        super().__init__(parent, 1000 // 120)
+        super().__init__(parent, 1000 // 180)
         self.spinOverlay.valueChanged.connect(self.overlayChange)
         self.spinMutationMin.valueChanged.connect(self.mutationChange)
         self.spinMutationMax.valueChanged.connect(self.mutationChange)

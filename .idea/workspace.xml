@@ -5,9 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evolution/cell.py" beforeDir="false" afterPath="$PROJECT_DIR$/Evolution/cell.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Evolution/evolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/Evolution/evolution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Evolution/world.py" beforeDir="false" afterPath="$PROJECT_DIR$/Evolution/world.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui_evol.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui_evol.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui_evol.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui_evol.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
