@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QColor, QBrush, QPen
 
-from Evolution.cell import Cell
+from Evolution.cell import Cell, commands
 
 
 class Overlay:
@@ -16,7 +16,7 @@ class EnergyOverlay(Overlay):
     def draw(self, world, qp):
         for i in range(world.height):
             sun = max(23 * (11 - (15 * i / world.height)), 0)
-            qp.fillRect(0, i * world.cell_size, world.cell_size * world.width, world.cell_size * world.height,
+            qp.fillRect(0, i * world.cell_size, world.cell_size * world.width, world.cell_size,
                         QColor(sun, sun, sun / 2))
 
     def get_color(self, cell):
@@ -26,7 +26,11 @@ class EnergyOverlay(Overlay):
 
 class GenOverlay(Overlay):
     def get_color(self, cell):
-        g = cell.genom.count(World.find_gen_min) * 255 // len(cell.genom)
+        res = 0
+        for i in cell.genom:
+            if i in commands.cmd_groups[World.curr_gen][1]:
+                res += 1
+        g = res * 255 // len(cell.genom)
         return QColor(100, g, 100) if g > 0 else Qt.black
 
 
@@ -40,7 +44,7 @@ class MineralOverlay(Overlay):
                 mineral += 1
             if i > world.height // 6 * 5:
                 mineral += 1
-            qp.fillRect(0, i * world.cell_size, world.cell_size * world.width, world.cell_size * world.height,
+            qp.fillRect(0, i * world.cell_size, world.cell_size * world.width, world.cell_size,
                         QColor(0, 0, 85 * mineral))
 
     def get_color(self, cell):
@@ -52,6 +56,7 @@ class World:
     overlay = 0
     find_gen_min = 0
     find_gen_max = 0
+    curr_gen = 'Gen energy from sun.'
 
     def __init__(self, width, height):
         self.width, self.height = width, height
@@ -110,11 +115,12 @@ class World:
             cell.think()
 
     def draw(self, qp):
-        qp.fillRect(0, 0, self.width * self.cell_size, self.height * self.cell_size, QColor(200, 200, 200))
-        dead_pen = QPen(QColor(255, 0, 0), 2, Qt.SolidLine)
-        alive_pen = QPen(QColor(125, 125, 125), 1, Qt.SolidLine)
-        self.overlays[World.overlay].draw(self, qp)
-        for i in self.cells:
-            qp.setBrush(self.overlays[World.overlay].get_color(i))
-            qp.setPen(dead_pen if i.dead else alive_pen)
-            qp.drawRect(i.x * self.cell_size, i.y * self.cell_size, self.cell_size, self.cell_size)
+        if self.overlay < len(self.overlays):
+            qp.fillRect(0, 0, self.width * self.cell_size, self.height * self.cell_size, QColor(200, 200, 200))
+            dead_pen = QPen(QColor(255, 0, 0), 2, Qt.SolidLine)
+            alive_pen = QPen(QColor(125, 125, 125), 1, Qt.SolidLine)
+            self.overlays[World.overlay].draw(self, qp)
+            for i in self.cells:
+                qp.setBrush(self.overlays[World.overlay].get_color(i))
+                qp.setPen(dead_pen if i.dead else alive_pen)
+                qp.drawRect(i.x * self.cell_size, i.y * self.cell_size, self.cell_size, self.cell_size)

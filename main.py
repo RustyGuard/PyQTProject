@@ -1,9 +1,9 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QLabel, QPushButton, QGroupBox
 import sys
 from ui_1 import Ui_MainWindow
-# from buttons import Buttons
 from snake import SnakeWindow
 from wordmaker import WordMaker
+from Evolution.evolution import Evolution
 
 
 class MyWidget(QMainWindow, Ui_MainWindow):
@@ -41,7 +41,6 @@ if __name__ == '__main__':
     ex = MyWidget()
     ex.add_application('WordMaker', WordMaker)
     ex.add_application('Snake', SnakeWindow)
-    # Example
-    # ex.add_application('Buttons', Buttons)
+    ex.add_application('Evolution', Evolution)
     ex.show()
     sys.exit(a.exec_())
