@@ -20,7 +20,7 @@ class EnergyOverlay(Overlay):
                         QColor(sun, sun, sun / 2))
 
     def get_color(self, cell):
-        en = min(cell.health * 255 / 1000, 255)
+        en = min(cell.health * 255 / World.scale_energy, 255)
         return QColor(en, en, 45)
 
 
@@ -48,7 +48,7 @@ class MineralOverlay(Overlay):
                         QColor(0, 0, 85 * mineral))
 
     def get_color(self, cell):
-        m = min(cell.mineral * 255 / 1000, 255)
+        m = min(cell.mineral * 255 / World.scale_minerals, 255)
         return QColor(25, 25, m)
 
 
@@ -57,6 +57,10 @@ class World:
     find_gen_min = 0
     find_gen_max = 0
     curr_gen = 'Gen energy from sun.'
+    curr_x = 0
+    curr_y = 0
+    scale_energy = 1000
+    scale_minerals = 1000
 
     def __init__(self, width, height):
         self.width, self.height = width, height
@@ -124,3 +128,6 @@ class World:
                 qp.setBrush(self.overlays[World.overlay].get_color(i))
                 qp.setPen(dead_pen if i.dead else alive_pen)
                 qp.drawRect(i.x * self.cell_size, i.y * self.cell_size, self.cell_size, self.cell_size)
+            qp.setPen(QPen(Qt.blue, 2, Qt.SolidLine))
+            qp.setBrush(Qt.NoBrush)
+            qp.drawRect(World.curr_x * self.cell_size, World.curr_y * self.cell_size, self.cell_size, self.cell_size)

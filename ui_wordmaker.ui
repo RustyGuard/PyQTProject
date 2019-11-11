@@ -17,7 +17,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Wordmaker</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>

@@ -191,7 +191,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Wordmaker"))
         self.wordStart.setText(_translate("MainWindow", "Начать ввод"))
         self.turnCancel.setText(_translate("MainWindow", "Отменить слово"))
         self.turnEnd.setText(_translate("MainWindow", "Закончить ход"))

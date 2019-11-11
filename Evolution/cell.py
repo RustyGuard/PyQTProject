@@ -127,7 +127,8 @@ class Cell:
         self.task = 0
         self.mprev = None
         self.mnext = None
-        self.dir = random.randint(0, 7)
+        self.dir = 0
+        # random.randint(0, 7)
 
     def think(self):
         if self.dead:

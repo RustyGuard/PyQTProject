@@ -13,7 +13,7 @@ from game import Game
 
 class Evolution(Game, Ui_MainWindow):
     def __init__(self, parent):
-        self.speeds = [0.05, 0.25, 0.5, 1.0, 1.5, 60.0]
+        self.speeds = [60.0, 1.5, 1.0, 0.5, 0.25, 0.15, 0.05]
         self.speed = 2
         super().__init__(parent, 1000 * self.speeds[self.speed] // 60)
         self.world = World(100, 85)
@@ -25,6 +25,39 @@ class Evolution(Game, Ui_MainWindow):
         self.spinMutTimes.valueChanged.connect(self.mutationChange)
         self.boxDouble.stateChanged.connect(self.mutationChange)
         self.boxMulti.stateChanged.connect(self.mutationChange)
+        self.boxX.setMaximum(self.world.width - 1)
+        self.boxY.setMaximum(self.world.height - 1)
+        self.boxX.valueChanged.connect(self.updateSelected)
+        self.boxY.valueChanged.connect(self.updateSelected)
+        self.btnUpdateCell.clicked.connect(self.updateSelected)
+        self.updateSelected()
+        self.updateInsertComboBox()
+        self.changeGen.clicked.connect(self.insertIntoGenom)
+        self.scaleMin.valueChanged.connect(self.updateScales)
+        self.scaleEn.valueChanged.connect(self.updateScales)
+
+    def updateScales(self):
+        World.scale_minerals = self.scaleMin.value()
+        World.scale_energy = self.scaleEn.value()
+
+    def updateSelected(self):
+        World.curr_x = self.boxX.value()
+        World.curr_y = self.boxY.value()
+        cell = self.world.getCell(World.curr_x, World.curr_y)
+        self.listGenom.clear()
+        if cell is None:
+            return
+        for cmd in cell.genom:
+            self.listGenom.addItem(commands.cmd_list[cmd][1])
+        self.currInfo.setText(f'Здоровье: {cell.health}\nМинералы: {cell.mineral}')
+
+    def insertIntoGenom(self):
+        index = self.listGenom.currentRow()
+        if index == -1 or not self.paused:
+            return
+        cell = self.world.getCell(World.curr_x, World.curr_y)
+        cell.genom[index] = self.comboGenChange.currentIndex()
+        self.updateSelected()
 
     def keyReleaseEvent(self, e):
         if e.key() == Qt.Key_S:
@@ -52,8 +85,14 @@ class Evolution(Game, Ui_MainWindow):
         World.overlay = self.tabWidget.currentIndex()
 
     def updateComboBox(self):
+        self.comboGen.clear()
         for i in commands.cmd_groups:
             self.comboGen.addItem(i)
+
+    def updateInsertComboBox(self):
+        self.comboGenChange.clear()
+        for i in commands.cmd_list:
+            self.comboGenChange.addItem(i[1])
 
     def itemChanged(self):
         World.curr_gen = self.comboGen.currentText()
